@@ -1,7 +1,7 @@
 <template>
     <div class="border-solid border-2 rounded-xl">
         <form class="p-4">
-            <h1 class="p-2 text-xl font-bold">Login</h1>
+            <h1 class="p-2 text-xl font-bold">Register</h1>
             <div class="p-2">
                 <label class="font-bold text-md">Email:</label>
                 <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
@@ -40,30 +40,9 @@
         </form>
     </div>
 </template>
-<script setup lang="ts">
+<script lang="ts" setup>
 definePageMeta({
     layout: "user-auth"
 });
 
-let email = ref();
-let password = ref();
-
-const login = async () => {
-    return await useFetch('/api/auth', {
-        method: 'post',
-        body: {
-            email: email,
-            password: password,
-        }
-    });
-}
-
-async function handleLogin() {
-    const res = await login();
-}
 </script>
-<style scoped>
-:deep() .fa-circle-check {
-    color: #0d65fd;
-}
-</style>

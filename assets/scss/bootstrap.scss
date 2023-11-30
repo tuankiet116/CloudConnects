@@ -1,0 +1,16 @@
+@import 'bootstrap/scss/bootstrap';
+
+:root {
+    --primary-color: #003a7c;
+}
+
+body {
+    @apply h-full;
+    font-family: monospace;
+    font-size: large;
+}
+
+a {
+    text-decoration: none !important;
+    color: black;
+}
