@@ -1,11 +1,21 @@
 @import 'bootstrap/scss/bootstrap';
+@import './colors';
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark,
+);
 
 :root {
-    --primary-color: #003a7c;
+    --primary-color: rgb(0, 57, 122)
 }
 
 body {
-    @apply h-full;
     font-family: monospace;
     font-size: large;
 }
@@ -13,4 +23,12 @@ body {
 a {
     text-decoration: none !important;
     color: black;
+}
+
+button {
+    outline: none;
+}
+
+.container, .container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
+    padding: 0;
 }

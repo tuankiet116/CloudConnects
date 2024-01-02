@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: [],
   app: {
     layoutTransition: {
 
@@ -17,21 +17,33 @@ export default defineNuxtConfig({
           "charset": "utf-8"
         }
       ],
+      script: [
+        'https://apis.google.com/js/platform.js'
+      ]
     }
   },
   css: [
     "@fortawesome/fontawesome-svg-core/styles.css",
-    '~/assets/scss/bootstrap.scss'
+    '~/assets/scss/bootstrap.scss',
   ],
   postcss: {
     plugins: {
-      tailwindcss: {},
       autoprefixer: {}
     }
   },
   runtimeConfig: {
     public: {
-      appName: "Cloud Linker"
+      appName: "Cloud Linker",
+      backendHost: "http://127.0.0.1:8000"
+    }
+  },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/assets/scss/_colors.scss" as *;'
+        }
+      }
     }
   }
 })

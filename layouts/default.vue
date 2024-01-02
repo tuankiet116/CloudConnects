@@ -1,44 +1,61 @@
 <template>
-    <div>
-        <nav class="dark:bg-gray-900 bg-header-navbar h-20">
-            <div class="max-w-screen-xl d-flex .flex-shrink-1 items-center justify-between mx-auto md:px-4 h-full">
-                <nuxt-link to="/" class="flex items-center md:ml-0 ml-2">
-                    <img src="../assets/images/storage-linkers-logo.png" class="h-10 w-10 mr-3"
-                        :alt="runtimeConfig.public.appName + ' Logo'" />
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap">
-                        {{ runtimeConfig.public.appName }}
-                    </span>
-                </nuxt-link>
-                <button type="button" class="inline-flex items-center p-2 w-20 justify-center text-sm 
-                            text-gray-500 md:hidden 
-                            hover:bg-gray-100 focus:outline-none focus:ring-2 
-                            focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 
-                            dark:focus:ring-gray-600 h-full" data-drawer-target="drawer-example"
-                    data-drawer-show="drawer-example" aria-controls="drawer-example">
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 17 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M1 1h15M1 7h15M1 13h15" />
-                    </svg>
-                </button>
-                <div class="hidden w-full md:block md:w-auto h-full" id="navbar-default">
-                    <ul class="font-medium flex flex-col md:p-0 rounded-lg 
-                        md:flex-row md:mt-0 md:border-0
-                        dark:bg-gray-800 md:dark:bg-gray-900 h-full cursor-pointer">
-                        <nuxt-link v-for="item in links" :to="item.to" class="h-full block bg-blue-700 rounded
-                            md:bg-transparent md:p-0" aria-current="page">
-                            <li class="p-4 hover:bg-primary hover:text-white 
-                                text-black h-full flex items-center ">
-                                {{ item.name }}
-                            </li>
-                        </nuxt-link>
-                    </ul>
+    <nav class=" bg-header-navbar">
+        <div class="container-lg d-flex .flex-shrink-1 align-items-center 
+                justify-content-between mx-auto px-md-4 h-100">
+            <nuxt-link to="/" class="d-flex align-items-center ml-md-0 ml-2 h-100">
+                <img src="../assets/images/storage-linkers-logo.png" class="logo h-100 mr-3"
+                    :alt="runtimeConfig.public.appName + ' Logo'" />
+                <h1 class="self-center fs-md-3 fs-4 bold whitespace-nowrap">
+                    {{ runtimeConfig.public.appName }}
+                </h1>
+            </nuxt-link>
+            <button type="button" class="p-2 d-md-none h-100 btn-offcanvas border-0" data-bs-toggle="offcanvas"
+                href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                <svg class="w-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button>
+            <div class="d-md-block d-none h-100">
+                <ul class="fs-5-md list-group list-group-horizontal menu-items-horizontal border-0 h-100">
+                    <nuxt-link v-for="item in links" :to="item.to" class="d-block h-100" aria-current="page">
+                        <li class="p-4 align-items-center list-group-item h-100">
+                            {{ item.name }}
+                        </li>
+                    </nuxt-link>
+                </ul>
+            </div>
+            <!-- OffCanvas Menu -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+                aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div>
+                        Some text as placeholder. In real life you can have the elements you have chosen. Like, text,
+                        images, lists, etc.
+                    </div>
+                    <div class="dropdown mt-3">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown">
+                            Dropdown button
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </nav>
-        <slot />
-        <footer></footer>
-    </div>
+        </div>
+    </nav>
+    <slot />
+    <footer></footer>
 </template>
 <script setup lang="ts">
 
@@ -67,3 +84,33 @@ const links = ref([
     },
 ]);
 </script>
+<style scoped lang="scss">
+nav {
+    height: 75px;
+    background-color: #ffba00
+}
+
+.menu-items-horizontal {
+    background-color: #ffba00;
+
+    li,
+    a {
+        border: none;
+        background-color: #ffba00;
+
+        &:hover {
+            background-color: $primary;
+            color: white;
+        }
+    }
+}
+
+.btn-offcanvas {
+    background-color: $navbar;
+    width: 50px;
+
+    &:hover, :focus {
+        background-color: $primary !important;
+        color: white;
+    }
+}</style>
