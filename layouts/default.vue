@@ -87,16 +87,16 @@ const links = ref([
 <style scoped lang="scss">
 nav {
     height: 75px;
-    background-color: #ffba00
+    background-color: $navbar;
 }
 
 .menu-items-horizontal {
-    background-color: #ffba00;
+    background-color: $navbar;
 
     li,
     a {
         border: none;
-        background-color: #ffba00;
+        background-color: $navbar;
 
         &:hover {
             background-color: $primary;
